@@ -6,6 +6,7 @@ using System.Runtime;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using Cadena.Engine.CyclicReceivers.Timelines;
 using Livet;
 using StarryEyes.Casket;
 using StarryEyes.Globalization;
@@ -131,6 +132,9 @@ namespace StarryEyes
                 Environment.Exit(-1);
             }
 
+            // update list receiving interval from settings
+            ListReceiver.BaseAccessIntervalSec = Setting.ListReceivePeriod.Value;
+            
             // prepare user anonymous id
 
             InitializeSubsystemsAfterSettingsLoaded();
