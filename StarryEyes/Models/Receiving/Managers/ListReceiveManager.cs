@@ -91,7 +91,7 @@ namespace StarryEyes.Models.Receiving.Managers
                         long id = account?.Id ?? 0;
                         if (!_listReceivers.TryGetValue(id, out var receiver))
                         {
-                            receiver = new ListReceiver(accessor, StatusInbox.Enqueue, BackstageModel.NotifyException);
+                            receiver = new ListReceiver(accessor, StatusInbox.Enqueue, BackstageModel.NotifyException, 30, true);
                             _listReceivers.Add(id, receiver);
                             ReceiveManager.ReceiveEngine.RegisterReceiver(receiver);
                         }
