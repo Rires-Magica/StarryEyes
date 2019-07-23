@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using Cadena.Api.Parameters;
 using Cadena.Api.Rest;
+using Cadena.Engine.CyclicReceivers.Timelines;
 using Cadena.Util;
 using JetBrains.Annotations;
 using Livet;
@@ -1145,7 +1146,11 @@ namespace StarryEyes.ViewModels.WindowParts.Flips
         public int ListReceivePeriod
         {
             get => Setting.ListReceivePeriod.Value;
-            set => Setting.ListReceivePeriod.Value = value;
+            set
+            {
+                Setting.ListReceivePeriod.Value = value;
+                ListReceiver.BaseAccessIntervalSec = value;
+            }
         }
 
         public int PostWindowTimeSec
